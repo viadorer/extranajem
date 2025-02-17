@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Vzorný nájemce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes bounce-delayed-1 {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes bounce-delayed-2 {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+        .animate-bounce-delayed-1 {
+            animation: bounce-delayed-1 3s infinite;
+            animation-delay: 0.5s;
+        }
+        .animate-bounce-delayed-2 {
+            animation: bounce-delayed-2 3s infinite;
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center space-x-3">
+                        <img class="h-12 w-12 transition-all duration-300 rounded-full shadow-md object-cover" :class="{ 'h-8 w-8': isScrolled }" src="images/logo.png" alt="Problémový nájemník">
+                        <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="hidden md:flex md:space-x-8">
+                        <a href="index.html#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Jak to funguje</a>
+                        <a href="index.html#odhad-ceny" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Odhad ceny nájmu</a>
+                        <a href="index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
+                        <a href="blog.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
+                        <a href="index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
+                        <a href="index.html#klientska-zona" class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="pt-32 pb-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                <a href="index.html" class="hover:text-gray-900">Home</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Blog</span>
+            </nav>
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">Provedeme vás světem pronajímání</h1>
+                <p class="text-xl text-gray-600">
+                    Za roky strávené ve světě nájemního bydlení jsme nasbírali spoustu zkušeností, o které se s vámi chceme podělit. Dali jsme proto dohromady odpovědi na nejčastější otázky, které majitelé bytů a nájemníci řeší, a přinášíme vám také novinky a zajímavosti ze světa pronájmů.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <main>
+        <!-- Hlavní sekce s blogem -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Levá část s blogem -->
+                <div class="lg:w-2/3 mb-12 lg:mb-0">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Najděte článek, který vás zajímá</h2>
+
+            <!-- Kategorie -->
+            <div class="flex flex-wrap gap-4 mb-12">
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Péče o byt</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Předcházení problémům</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Energie</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Finance</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Právo</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Vývoj cen a statistiky</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Daně</button>
+                <button class="px-6 py-2 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition-colors duration-200">Jak pronajímat byt</button>
+                                </div>
+                                
+            <!-- Počet článků -->
+            <div class="flex items-center justify-between">
+                <p class="text-gray-600">Zobrazuje se <span class="font-medium text-gray-900">82</span> z <span class="font-medium text-gray-900">82</span> článků.</p>
+                <button class="text-gray-600 hover:text-gray-900 flex items-center gap-2">
+                    <span>Vymazat filtry</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+            <!-- Grid článků -->
+            <div class="grid gap-8 md:grid-cols-2 mt-8">
+                <!-- Vzorový článek -->
+                <article class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100">
+                    <a href="#" class="block">
+                        <img src="images/blog/clanek1.jpg" alt="Náhledový obrázek článku" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <!-- Kategorie -->
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Péče o byt</span>
+                                <span class="text-gray-400 text-sm">5 min čtení</span>
+                            </div>
+ 
+                <!-- Další články budou přidány dynamicky -->
+            </div>
+
+            <!-- Pravá část s formulářem -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Máte otázky?</h3>
+                    <p class="text-gray-600 mb-6">Neváhejte nás kontaktovat. Rádi vám pomůžeme s jakýmkoliv dotazem ohledně pronájmu.</p>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Jméno a příjmení</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent transition-colors" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent transition-colors" required>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent transition-colors" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Zpráva</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent transition-colors" required></textarea>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="w-full px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center gap-2">
+                                Odeslat zprávu
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="mt-24 mb-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+                <!-- Dekorativní prvek - graf -->
+                <div class="absolute top-4 right-8">
+                    <img src="images/graph-up.svg" alt="Graf" class="w-24 h-24 opacity-90">
+                </div>
+
+                <div class="p-12">
+                    <div class="max-w-3xl">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Pronajímáte za správnou cenu?</h2>
+                        <p class="text-xl text-gray-600 mb-8">Zjistěte aktuální hodnotu tržního nájemného ve vašem bytě.</p>
+                        
+                        <a href="#calculator" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-[#EE6D52] hover:bg-[#e85c3d] transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all gap-2">
+                            Spočítat nájemné
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Odměna za doporučení -->
+    <section class="mt-24 mb-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <!-- Hlavní obsah -->
+                <div class="p-12">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <!-- Ikona -->
+                        <div class="w-20 h-20 mx-auto mb-6 relative">
+                            <div class="w-20 h-20 bg-[#EE6D52] rounded-2xl rotate-6"></div>
+                            <img src="images/happy-person.svg" alt="Vzorný nájemce" class="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-[#EE6D52] rounded-full flex items-center justify-center animate-bounce">
+                                <span class="text-white text-xs">24/7</span>
+                            </div>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Bezstarostný příjem z pronájmu</h2>
+                        <p class="text-2xl font-semibold text-[#EE6D52] mb-6">Ať se děje cokoliv...</p>
+                        <p class="text-xl text-gray-600 mb-8">Nechejte nám na sebe kontakt a my se vám do 24 hodin ozveme. Rádi s vámi <span class="font-medium text-gray-900">probereme vaše potřeby a představíme výhody naší služby</span>.</p>
+                        
+                        <a href="#konzultace" class="inline-flex items-center justify-center px-8 py-4 bg-[#EE6D52] text-white font-medium rounded-xl hover:bg-[#e85c3d] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl gap-2 group">
+                            Domluvit konzultaci
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Výhody -->
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Výhoda 1 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">63</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Hodin ušetřených správou bytu</h3>
+                            <p class="text-gray-600">Vyřešíme za vás nejen inzerci, prověření zájemců a obsazení bytu, ale také kontroly, pojistné události, řemeslníky či jakoukoliv pohotovostní událost.</p>
+                        </div>
+
+                        <!-- Výhoda 2 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">0 Kč</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Riziko spojené s neplatiči nájemného</h3>
+                            <p class="text-gray-600">Váš nájemník jsme my. Riziko neplaticích podnájemníků tak přebíráme za vás. Nájemné vám tak přijde vždy na den přesně. Na to se můžete spolehnout.</p>
+                        </div>
+
+                        <!-- Výhoda 3 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">25 tis Kč</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Ušetříte na opravách a dalších nákladech</h3>
+                            <p class="text-gray-600">Nemusíte se starat o žádné opravy, pojistné události, vyúčtování či kontroly bytu. Na vše myslíme za vás. 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter sekce -->
+    <section class="mt-24 -mx-4 sm:-mx-6 lg:-mx-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="relative">
+                <!-- Dekorativní prvky -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+                    <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="w-[800px] h-[800px] bg-white/20 rounded-full blur-3xl"></div>
+                    </div>
+                    <div class="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2">
+                        <div class="w-[800px] h-[800px] bg-white/20 rounded-full blur-3xl"></div>
+                    </div>
+                </div>
+
+                <div class="relative text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Buďte v obraze</h2>
+                    <p class="text-xl text-gray-300 mb-8">Přihlásit se k odběru novinek a získáte přístup k exkluzivním informacím ze světa pronájmů.</p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                        <input type="email" placeholder="Váš e-mail" class="flex-1 px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors">
+                        <button type="submit" class="px-8 py-4 bg-white text-gray-900 font-medium rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
+                            Odebírat novinky
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+</main>
+    <div class="mt-24 mb-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <!-- Hlavní obsah -->
+                <div class="p-12">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <!-- Ikona -->
+                        <div class="w-20 h-20 mx-auto mb-6 relative">
+                            <div class="w-20 h-20 bg-[#EE6D52] rounded-2xl rotate-6"></div>
+                            <img src="images/happy-person.svg" alt="Vzorný nájemce" class="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-[#EE6D52] rounded-full flex items-center justify-center animate-bounce">
+                                <span class="text-white text-xs">24/7</span>
+                            </div>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Bezstarostný příjem z pronájmu</h2>
+                        <p class="text-2xl font-semibold text-[#EE6D52] mb-6">Ať se děje cokoliv...</p>
+                        <p class="text-xl text-gray-600 mb-8">Nechejte nám na sebe kontakt a my se vám do 24 hodin ozveme. Rádi s vámi <span class="font-medium text-gray-900">probereme vaše potřeby a představíme výhody naší služby</span>.</p>
+                        
+                        <a href="#konzultace" class="inline-flex items-center justify-center px-8 py-4 bg-[#EE6D52] text-white font-medium rounded-xl hover:bg-[#e85c3d] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl gap-2 group">
+                            Domluvit konzultaci
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Výhody -->
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Výhoda 1 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">63</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Hodin ušetřených správou bytu</h3>
+                            <p class="text-gray-600">Vyřešíme za vás nejen inzerci, prověření zájemců a obsazení bytu, ale také kontroly, pojistné události, řemeslníky či jakoukoliv pohotovostní událost.</p>
+                        </div>
+
+                        <!-- Výhoda 2 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">0 Kč</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Riziko spojené s neplatiči nájemného</h3>
+                            <p class="text-gray-600">Váš nájemník jsme my. Riziko neplaticích podnájemníků tak přebíráme za vás. Nájemné vám tak přijde vždy na den přesně. Na to se můžete spolehnout.</p>
+                        </div>
+
+                        <!-- Výhoda 3 -->
+                        <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                            <div class="text-4xl font-bold text-[#EE6D52] mb-6">25 tis Kč</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Ušetříte na opravách a dalších nákladech</h3>
+                            <p class="text-gray-600">Nemusíte se starat o žádné opravy, pojistné události, vyúčtování či kontroly bytu. Na vše myslíme za vás. 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="mt-24 mb-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+                <!-- Dekorativní prvek - graf -->
+                <div class="absolute top-4 right-8">
+                    <img src="images/graph-up.svg" alt="Graf" class="w-24 h-24 opacity-90">
+                </div>
+
+                <div class="p-12">
+                    <div class="max-w-3xl">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Pronajímáte za správnou cenu?</h2>
+                        <p class="text-xl text-gray-600 mb-8">Zjistěte aktuální hodnotu tržního nájemného ve vašem bytě.</p>
+                        
+                        <a href="#calculator" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-[#EE6D52] hover:bg-[#e85c3d] transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all gap-2">
+                            Spočítat nájemné
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+ 
+   
+
+        <!-- Propagace služeb -->
+        <div class="mt-24 mb-24 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                    <!-- Hlavní obsah -->
+                    <div class="p-12">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <!-- Ikona -->
+                            <div class="w-20 h-20 mx-auto mb-6 relative">
+                                <div class="w-20 h-20 bg-[#EE6D52] rounded-2xl rotate-6"></div>
+                                <img src="images/happy-person.svg" alt="Vzorný nájemce" class="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-[#EE6D52] rounded-full flex items-center justify-center animate-bounce">
+                                    <span class="text-white text-xs">24/7</span>
+                                </div>
+                            </div>
+
+                            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Bezstarostný příjem z pronájmu</h2>
+                            <p class="text-2xl font-semibold text-[#EE6D52] mb-6">Ať se děje cokoliv...</p>
+                            <p class="text-xl text-gray-600 mb-8">Nechejte nám na sebe kontakt a my se vám do 24 hodin ozveme. Rádi s vámi <span class="font-medium text-gray-900">probereme vaše potřeby a představíme výhody naší služby</span>.</p>
+                            
+                            <a href="#konzultace" class="inline-flex items-center justify-center px-8 py-4 bg-[#EE6D52] text-white font-medium rounded-xl hover:bg-[#e85c3d] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl gap-2 group">
+                                Domluvit konzultaci
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Výhody -->
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Výhoda 1 -->
+                            <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                                <div class="text-4xl font-bold text-[#EE6D52] mb-6">63</div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Hodin ušetřených správou bytu</h3>
+                                <p class="text-gray-600">Vyřešíme za vás nejen inzerci, prověření zájemců a obsazení bytu, ale také kontroly, pojistné události, řemeslníky či jakoukoliv pohotovostní událost.</p>
+                            </div>
+
+                            <!-- Výhoda 2 -->
+                            <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                                <div class="text-4xl font-bold text-[#EE6D52] mb-6">0 Kč</div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Riziko spojené s neplatiči nájemného</h3>
+                                <p class="text-gray-600">Váš nájemník jsme my. Riziko neplaticích podnájemníků tak přebíráme za vás. Nájemné vám tak přijde vždy na den přesně. Na to se můžete spolehnout.</p>
+                            </div>
+
+                            <!-- Výhoda 3 -->
+                            <div class="bg-gray-50 rounded-2xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
+                                <div class="text-4xl font-bold text-[#EE6D52] mb-6">25 tis Kč</div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Ušetříte na opravách a dalších nákladech</h3>
+                                <p class="text-gray-600">Nemusíte se starat o žádné opravy, pojistné události, vyúčtování či kontroly bytu. Na vše myslíme za vás. 24/7.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter sekce -->
+        <div class="mt-24 -mx-4 sm:-mx-6 lg:-mx-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="relative">
+                    <!-- Dekorativní prvky -->
+                    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+                        <div class="transform -rotate-3 -translate-y-8">
+                            <div class="w-[800px] h-[300px] bg-white/20 rounded-3xl"></div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+                        <div class="transform rotate-3 translate-y-8 translate-x-12">
+                            <div class="w-[800px] h-[300px] bg-white/20 rounded-3xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- Obsah -->
+                    <div class="relative text-center max-w-2xl mx-auto">
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Přihlásit se k odběru novinek</h2>
+                        <p class="text-lg sm:text-xl text-gray-300 mb-8">Nenechte si ujít žádné novinky ze světa pronájmů. Posíláme pouze užitečné informace, žádný spam.</p>
+                        
+                        <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                            <input 
+                                type="email" 
+                                placeholder="Váš e-mail" 
+                                class="flex-1 px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
+                                required
+                            >
+                            <button 
+                                type="submit"
+                                class="px-8 py-4 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 transition-colors duration-200 whitespace-nowrap flex items-center justify-center gap-2 group"
+                            >
+                                Přihlásit se
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <p class="mt-4 text-sm text-gray-400">Odběr můžete kdykoliv zrušit jedním kliknutím.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+ <!-- Footer -->
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Sekce 1: O společnosti -->
+            <div class="space-y-4">
+                <img src="images/logo ptf aktuální průhledné.png" alt="PTF reality, s.r.o." class="h-12">
+                <p class="text-gray-400">
+                    Specializujeme se na profesionální pronájmy nemovitostí a řešení problémů s nájemníky. Pomáháme majitelům nemovitostí již od roku 1999.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com/ptfreality" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/ptfreality" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447,20.452H16.893V14.883c0-1.328-.027-3.037-1.852-3.037-1.853,0-2.136,1.445-2.136,2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9,1.637-1.85,3.37-1.85c3.601,0,4.267,2.37,4.267,5.455v6.286ZM5.337,7.433c-1.144,0-2.063-.926-2.063-2.065,0-1.138.92-2.063,2.063-2.063,1.14,0,2.064.925,2.064,2.063,0,1.139-.925,2.065-2.064,2.065Zm2.062,13.019H3.274V9H7.4v11.452ZM22.225,0H1.771C.792,0,0,.774,0,1.729v20.542C0,23.227.792,24,1.771,24h20.451C23.2,24,24,23.227,24,22.271V1.729C24,.774,23.2,0,22.222,0h.003Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/ptfreality" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2.982c2.937,0,3.285.011,4.445.064a6.087,6.087,0,0,1,2.042.379,3.408,3.408,0,0,1,1.265.823,3.408,3.408,0,0,1,.823,1.265,6.087,6.087,0,0,1,.379,2.042c.053,1.16.064,1.508.064,4.445s-.011,3.285-.064,4.445a6.087,6.087,0,0,1-.379,2.042,3.643,3.643,0,0,1-2.088,2.088,6.087,6.087,0,0,1-2.042.379c-1.16.053-1.508.064-4.445.064s-3.285-.011-4.445-.064a6.087,6.087,0,0,1-2.043-.379,3.408,3.408,0,0,1-1.265-.823,3.408,3.408,0,0,1-.823-1.265,6.087,6.087,0,0,1-.379-2.042c-.053-1.16-.064-1.508-.064-4.445s.011-3.285.064-4.445a6.087,6.087,0,0,1,.379-2.042,3.408,3.408,0,0,1,.823-1.265,3.408,3.408,0,0,1,1.265-.823,6.087,6.087,0,0,1,2.043-.379c1.16-.053,1.508-.064,4.445-.064M12,1c-2.987,0-3.362.013-4.535.066a8.074,8.074,0,0,0-2.67.511,5.392,5.392,0,0,0-1.949,1.27,5.392,5.392,0,0,0-1.27,1.949,8.074,8.074,0,0,0-.511,2.67C1.013,8.638,1,9.013,1,12s.013,3.362.066,4.535a8.074,8.074,0,0,0,.511,2.67,5.392,5.392,0,0,0,1.27,1.949,5.392,5.392,0,0,0,1.949,1.27,8.074,8.074,0,0,0,2.67.511C8.638,22.987,9.013,23,12,23s3.362-.013,4.535-.066a8.074,8.074,0,0,0,2.67-.511,5.625,5.625,0,0,0,3.219-3.219,8.074,8.074,0,0,0,.511-2.67C22.987,15.362,23,14.987,23,12s-.013-3.362-.066-4.535a8.074,8.074,0,0,0-.511-2.67,5.392,5.392,0,0,0-1.27-1.949,5.392,5.392,0,0,0-1.949-1.27,8.074,8.074,0,0,0-2.67-.511C15.362,1.013,14.987,1,12,1Zm0,5.351A5.649,5.649,0,1,0,17.649,12,5.649,5.649,0,0,0,12,6.351Zm0,9.316A3.667,3.667,0,1,1,15.667,12,3.667,3.667,0,0,1,12,15.667Zm5.872-10.859a1.32,1.32,0,1,0,1.32,1.32A1.32,1.32,0,0,0,17.872,4.808Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sekce 2: Užitečné odkazy -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Užitečné odkazy</h3>
+                <ul class="space-y-2">
+                    <li><a href="https://www.vzornynajemce.cz" class="text-gray-400 hover:text-white transition-colors">Vzorný nájemce</a></li>
+                    <li><a href="/blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="#moderni-pronajem" class="text-gray-400 hover:text-white transition-colors">Moderní pronájem</a></li>
+                    <li><a href="#kalkulator" class="text-gray-400 hover:text-white transition-colors">Kalkulačka nákladů</a></li>
+                    <li><a href="#ebook" class="text-gray-400 hover:text-white transition-colors">E-book zdarma</a></li>
+                </ul>
+            </div>
+
+            <!-- Sekce 3: Kontakt -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>PTF reality, s.r.o.<br>Rybná 716/24<br>110 00 Praha 1</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <a href="mailto:info@ptfreality.cz" class="hover:text-white transition-colors">info@ptfreality.cz</a>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <a href="tel:+420777888999" class="hover:text-white transition-colors">+420 777 888 999</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sekce 4: Právní informace -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Právní informace</h3>
+                <ul class="space-y-2">
+                    <li><a href="/gdpr" class="text-gray-400 hover:text-white transition-colors">Ochrana osobních údajů (GDPR)</a></li>
+                    <li><a href="/cookies" class="text-gray-400 hover:text-white transition-colors">Cookies</a></li>
+                    <li><a href="/obchodni-podminky" class="text-gray-400 hover:text-white transition-colors">Obchodní podmínky</a></li>
+                    <li>
+                        <p class="text-gray-400 text-sm mt-4">
+                            IČO: 12345678<br>
+                            DIČ: CZ12345678<br>
+                            Společnost zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 123456
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 mt-12 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 PTF reality, s.r.o. Všechna práva vyhrazena.
+                </p>
+                <div class="flex items-center space-x-6 mt-4 md:mt-0">
+                    <a href="https://www.vzornynajemce.cz" class="flex items-center space-x-2 group">
+                        <img src="images/vzornynajemce.png" alt="Vzorný nájemce" class="h-8">
+                        <span class="text-gray-400 group-hover:text-white transition-colors text-sm">www.vzornynajemce.cz</span>
+                    </a>
+                    <span class="text-gray-600">|</span>
+                    <a href="https://www.problemovynajemce.cz" class="text-gray-400 hover:text-white transition-colors text-sm">www.problemovynajemce.cz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="module">
+        // Pro debugování
+        console.log('Blog script loading...');
+        
+        import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+        
+        // Blog post data structure
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Moderní pronájem v roce 2025: Jak na to?",
+                slug: "moderni-pronajem-2025",
+                date: "2025-02-16",
+                excerpt: "Objevte nejnovější trendy a postupy v oblasti pronájmu nemovitostí pro rok 2025. Od digitalizace až po smart home řešení.",
+                content: "blog/posts/moderni-pronajem-2025.md"
+            },
+            {
+                id: 2,
+                title: "Jak správně postupovat při neplacení nájmu",
+                slug: "jak-spravne-postupovat-pri-neplaceni-najmu",
+                date: "2024-02-16",
+                excerpt: "Zjistěte, jaké kroky můžete podniknout, když nájemník neplatí nájem, a jak správně postupovat v souladu se zákonem.",
+                content: "blog/posts/neplaceni-najmu.md"
+            },
+            {
+                id: 3,
+                title: "Právní nástroje pro řešení problémů s nájemníky",
+                slug: "pravni-nastroje-pro-reseni-problemu",
+                date: "2024-02-15",
+                excerpt: "Přehled právních nástrojů, které můžete využít při řešení problémů s problémovými nájemníky.",
+                content: "blog/posts/pravni-nastroje.md"
+            }
+        ];
+
+        // Function to load and render blog posts
+        function loadBlogPosts() {
+            console.log('Loading blog posts...');
+            const blogContainer = document.getElementById('blog-posts');
+            if (!blogContainer) {
+                console.log('Blog container not found');
+                return;
+            }
+
+            const posts = blogPosts.map(post => `
+                <article class="fade-in-up bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <time datetime="${post.date}">${new Date(post.date).toLocaleDateString('cs-CZ', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            })}</time>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">
+                            <a href="/detail.html?slug=${post.slug}" class="hover:text-gray-600 transition-colors duration-200">
+                                ${post.title}
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">${post.excerpt}</p>
+                        <a href="/detail.html?slug=${post.slug}" 
+                           class="inline-flex items-center text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200">
+                            Číst více
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+
+            console.log('Rendered posts:', posts);
+            blogContainer.innerHTML = posts;
+
+            // Přidání animace pro fade-in efekt
+            const articles = document.querySelectorAll('.fade-in-up');
+            articles.forEach((article, index) => {
+                setTimeout(() => {
+                    article.classList.add('show');
+                }, index * 100);
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing blog...');
+            loadBlogPosts();
+        });
+    </script>
+</body>
+</html>
