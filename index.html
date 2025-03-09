@@ -27,6 +27,7 @@
         }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
         /* Odstranění šipek u number inputů */
         input[type="number"]::-webkit-inner-spin-button,
@@ -48,6 +49,10 @@
         }
         .gradient-overlay {
             background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .h-screen {
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for mobile browsers */
         }
     </style>
 </head>
@@ -75,7 +80,7 @@
                     <div x-show="isOpen" class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-2">
                         <div class="px-4 pt-2 pb-3 space-y-1">
                             <a href="#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Jak to funguje</a>
-                            <a href="#odhad-ceny" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Odhad ceny nájmu</a>
+                            <a href="/kalkulator-trzniho-najemneho.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Spočítat nájemné</a>
                             <a href="#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">O službě</a>
                             <a href="blog.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Blog</a>
                             <a href="#faq" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">FAQ</a>
@@ -85,7 +90,7 @@
 
                     <div class="hidden md:flex md:space-x-8">
                         <a href="#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Jak to funguje</a>
-                        <a href="#odhad-ceny" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Odhad ceny nájmu</a>
+                        <a href="/kalkulator-trzniho-najemneho.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Spočítat nájemné</a>
                         <a href="#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
                         <a href="blog.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
                         <a href="#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
@@ -97,7 +102,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative min-h-screen overflow-hidden">
+    <div class="relative h-screen overflow-hidden flex flex-col justify-center">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="images/hero-image.jpg" alt="Background" class="w-full h-full object-cover">
@@ -105,8 +110,8 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-28 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-7xl mx-auto">
+        <div class="relative z-10 flex flex-col justify-center h-full px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto w-full">
                 <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                     <div class="sm:text-center lg:text-left lg:col-span-7" x-data="{}" x-intersect="$el.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('show'))">
                         <h1 class="fade-in-up text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-8 space-y-4">
@@ -142,11 +147,14 @@
                         </svg>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-    
-
-                <!-- Trust Indicators -->
-                        <div class="fade-in-up mt-12 pt-8 border-t border-gray-200 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:mt-16">
+    <!-- Trust Indicators Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in-up border-t border-gray-200 pt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                             <div class="flex flex-col">
                                 <span class="text-3xl font-bold text-gray-900">98%</span>
                                 <span class="text-sm text-gray-600 mt-1">Úspěšnost případů</span>
@@ -847,31 +855,31 @@
                             <!-- První řada -->
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/rocket.svg" alt="Inzerce" class="w-full h-full">
+                                    <img src="images/VZORNÝ NÁJEMCE BĚŽÍ.png.avif" alt="Rychlost" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
-                                <h3 class="text-lg font-semibold mb-3">Profesionální inzerce</h3>
-                                <p class="text-gray-600">Zařídíme profesionální inzerci i prohlídky se zájemci</p>
+                                <h3 class="text-lg font-semibold mb-3">Rychlost a efektivita</h3>
+                                <p class="text-gray-600">Rychle a efektivně vyřešíme všechny vaše požadavky</p>
                             </div>
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/search.svg" alt="Prověření" class="w-full h-full">
+                                    <img src="images/Vzorný nájemce busta.png.avif" alt="Profesionalita" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
-                                <h3 class="text-lg font-semibold mb-3">Důkladné prověření</h3>
-                                <p class="text-gray-600">Zájemce důkladně prověříme v 6 rejstřících</p>
+                                <h3 class="text-lg font-semibold mb-3">Profesionalita</h3>
+                                <p class="text-gray-600">Profesionální přístup ke každému klientovi</p>
                             </div>
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/document.svg" alt="Dokumenty" class="w-full h-full">
+                                    <img src="images/Vzorný nájemce supermann.png" alt="Garance" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
-                                <h3 class="text-lg font-semibold mb-3">Elektronická správa</h3>
-                                <p class="text-gray-600">Všechny dokumenty podepisujeme elektronicky</p>
+                                <h3 class="text-lg font-semibold mb-3">Garance a jistota</h3>
+                                <p class="text-gray-600">Garantujeme vám bezproblémový pronájem</p>
                             </div>
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/insurance.svg" alt="Pojištění" class="w-full h-full">
+                                    <img src="images/Vzorný nájemce supermann.png" alt="Pojištění" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Komplexní pojištění</h3>
                                 <p class="text-gray-600">Váš majetek chrání pojištění domácnosti a odpovědnosti</p>
@@ -1452,6 +1460,237 @@
         </div>
     </div>
 </section>
+
+
+<section id="faq" class="py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Často kladené otázky</h2>
+            <p class="text-xl text-gray-600">Vše, co potřebujete vědět o službě Vzorný nájemce</p>
+        </div>
+
+        <div class="space-y-4" x-data="{ activeQuestion: null }">
+            <!-- Jak funguje služba vzorný nájemce? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 1 ? null : 1)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak funguje služba vzorný nájemce?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 1}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 1" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Vzorný nájemce vám zajistí bezstarostný příjem z pronájmu ať se děje cokoliv. Vyřešíme za vás nejen inzerci, prověření zájemců a obsazení bytu, ale také kontroly, pojistné události, řemeslníky či jakoukoliv pohotovostní událost.</p>
+                    <p class="text-gray-600 mt-3">Váš nájemník jsme my. Riziko neplatících podnájemníků tak přebíráme za vás. Nájemné vám tak přijde vždy na den přesně. Na to se můžete spolehnout.</p>
+                    <p class="text-gray-600 mt-3">Po celou dobu ručíme za pravidelné platby, stav bytu či vyúčtování. Naši právníci a správci se postarají o to, aby byl váš majetek vždy chráněný a vy s pronájmem neměli žádné starosti.</p>
+                </div>
+            </div>
+
+            <!-- Na jak dlouho spolu uzavíráme smlouvu? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 2 ? null : 2)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Na jak dlouho spolu uzavíráme smlouvu?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 2}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 2" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Nájemní smlouvu uzavíráme na dva až pět let, s možností tříměsíční výpovědi. Smlouvu v případě oboustranného zájmu rádi a jednoduše prodloužíme.</p>
+                </div>
+            </div>
+
+            <!-- Jak bude probíhat první schůzka? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 3 ? null : 3)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak bude probíhat první schůzka?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 3}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 3" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Potkáme se v bytě, který chcete pronajmout, a společně si ho projdeme. Podíváme se na stav a příslušenství bytu a pobavíme se o optimální výši nájemného a záloh a o dalších podrobnostech. Také vám vysvětlíme, jak bude vzájemná spolupráce probíhat, jaké výhody a úspory naše služba přináší a zodpovíme všechny vaše dotazy.</p>
+                </div>
+            </div>
+
+            <!-- Ve kterých městech působíme? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 4 ? null : 4)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Ve kterých městech působíme?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 4}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 4" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Aktuálně působíme ve dvou krajských městech. V Praze a v Plzni.</p>
+                </div>
+            </div>
+
+            <!-- Na koho budou psány energie? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 5 ? null : 5)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Na koho budou psány energie?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 5}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 5" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Podle našich zkušeností je nejlepší, když zůstanou energie psány na majitele bytu. Při sjednání i ukončení podnájemní smlouvy vždy opisujeme stav měřidel, abychom vyúčtování provedli podle skutečné spotřeby. Po tom, co obdržíte vyúčtování za energie či od SVJ, nám kompletní podklady zašlete a my je v co nejkratší době zpracujeme. V případě, že vám vznikne za energie nedoplatek, uhradíte jej svému dodavateli a my vám jej po zpracování vyúčtování zašleme zpět. Ohledně stavu vašeho vyúčtování se vždy můžete informovat u naší klientské podpory.</p>
+                </div>
+            </div>
+
+            <!-- Jak vybíráte podnájemníka? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 6 ? null : 6)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak vybíráte podnájemníka? Lze mít nad výběrem kontrolu?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 6}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 6" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Vaše preference jsou pro nás na prvním místě – pokud si v bytě nepřejete domácí mazlíčky, kuřáky nebo kohokoliv dalšího, rádi vám vyhovíme. Následně podnájemníky vybíráme standardně sami – je to součástí naší služby v rámci kompletní péče o pronájem. Všechny vážné zájemce důkladně prověřujeme v 6 veřejných rejstřících v Česku a na Slovensku, abychom ověřili jejich bonitu a spolehlivost. Stále platí, že my ručíme za pravidelné platby a stav vašeho bytu.</p>
+                </div>
+            </div>
+
+            <!-- Jak rychle můj byt obsadíte? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 7 ? null : 7)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak rychle můj byt obsadíte?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 7}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 7" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Byty, o které se staráme, pronajmeme průměrně v horizontu jednoho měsíce. Máme nejaktuálnější data o tržních cenách nájmů v jednotlivých oblastech – proto se s vámi domlouváme na takové výši nájemného, abyste měli co nejvyšší zisk a zároveň aby váš byt byl konkurenceschopný a rychle jsme do něj našli podnájemníka.</p>
+                </div>
+            </div>
+
+            <!-- Jak ručíte za stav bytu? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 8 ? null : 8)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak ručíte za stav bytu?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 8}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 8" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Majitelům nemovitostí zajišťujeme veškerý servis spojený s pronájmem jejich bytu, včetně převzetí rizik. Pro všechny podnájemníky sjednáváme povinné pojištění domácnosti a odpovědnosti a řešíme s nimi běžnou údržbu bytu i nutné opravy. Pokud nastane pojistná událost, o vše se postaráme. Na konci spolupráce byt vždy vracíme v původním stavu, s přihlédnutím k běžnému opotřebení.</p>
+                </div>
+            </div>
+
+            <!-- Jak řešíte případné škody v bytě? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 9 ? null : 9)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak řešíte případné škody v bytě?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 9}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 9" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Pokud se na bytě něco přihodí, zařídíme potřebné opravy a postaráme se o pojistné události. Máme speciální spolupráci s pojišťovnou, která kryje pojištění domácnosti i odpovědnosti a hradí případné škody, které podnájemník neúmyslně způsobí, což standardní pojištění nepokrývá. Byt je s námi proto ve větším bezpečí, než kdybyste pronajímali napřímo.</p>
+                </div>
+            </div>
+
+            <!-- Kontrolujete, jestli je s mým bytem vše v pořádku? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 10 ? null : 10)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Kontrolujete, jestli je s mým bytem vše v pořádku?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 10}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 10" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Ano, prevence a předcházení problémům jsou pro nás prioritou. Byt pravidelně kontrolujeme a majitelům zasíláme report včetně fotografií. S podnájemníky průběžně řešíme běžnou údržbu i drobné opravy. Pokud dojde k pojistné události, postaráme se o vyřízení i veškeré papírování.</p>
+                </div>
+            </div>
+
+            <!-- Když podnájemník skončí, kdo se postará o nalezení nového? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 11 ? null : 11)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Když podnájemník skončí, kdo se postará o nalezení nového?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 11}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 11" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">O vše se postaráme my – od ukončení smlouvy se stávajícím podnájemníkem přes důkladnou kontrolu během procesu vrácení bytu až po úklid a případné opravy v rámci přípravy bytu pro nového obyvatele. Zpracujeme také vyúčtování energií a služeb. Mezitím najdeme nového podnájemníka a opět s ním vyřešíme veškerou administrativu. Vy nemusíte dělat vůbec nic.</p>
+                </div>
+            </div>
+
+            <!-- Jak řešíte opravy na bytě? -->
+            <div class="bg-white rounded-xl shadow-sm">
+                <button @click="activeQuestion = (activeQuestion === 12 ? null : 12)" 
+                        class="flex justify-between items-center w-full px-6 py-4 text-left">
+                    <span class="text-lg font-semibold text-gray-900">Jak řešíte opravy na bytě? Kdo je platí?</span>
+                    <svg :class="{'rotate-180': activeQuestion === 12}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="activeQuestion === 12" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="opacity-0 transform -translate-y-2" 
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="px-6 pb-4">
+                    <p class="text-gray-600">Ve většině případů vše řešíme s podnájemníkem. Podnájemník nám nahlásí situaci, my ji vyřešíme a vyřešíme s ním úhradu. V případě, že se jedná o nákladné opravy, které dle zákona nespadají pod drobné opravy a které jsou za podnájemníkem, předem vás kontaktujeme a společně najdeme nejlepší řešení.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Footer -->
 <footer class="bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
