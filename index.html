@@ -1840,12 +1840,15 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
             isOpen: false, // Explicitně nastavené na false pro zamezení nečekaného otevření
             toggle() {
                 this.isOpen = !this.isOpen;
+                console.log('Popup toggled, isOpen:', this.isOpen);
             },
             show() {
                 this.isOpen = true;
+                console.log('Popup shown, isOpen:', this.isOpen);
             },
             open() {
                 this.isOpen = true;
+                console.log('Popup opened, isOpen:', this.isOpen);
             }
         });
 
@@ -1854,21 +1857,31 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
             open: false,
 
             init() {
+                // Sledování změn v globálním store
                 this.$watch('$store.popup.isOpen', (value) => {
+                    console.log('Popup state changed:', value);
                     this.open = value;
+                });
+                
+                // Explicitní inicializace
+                this.$nextTick(() => {
+                    Alpine.store('popup').isOpen = false;
+                    this.open = false;
+                    console.log('Popup initialized, isOpen:', this.open);
                 });
             },
 
             close() {
                 this.open = false;
                 Alpine.store('popup').isOpen = false;
+                console.log('Popup closed manually');
             }
         }));
     });
 </script>
 
 <!-- Popup Form -->
-<div x-data="popupFormController" x-cloak x-init="$nextTick(() => { Alpine.store('popup').isOpen = false; })">
+<div x-data="popupFormController" x-cloak>
     <!-- Backdrop -->
     <div x-show="open" 
         x-transition:enter="transition ease-out duration-300"
