@@ -640,11 +640,11 @@
 
 
 
-    <section id="sluzby" class="py-24 bg-gray-900">
+    <section id="sluzby" class="py-24 bg-gradient-to-b from-white to-blue-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Vyberte si svůj klid</h2>
-                <p class="text-xl text-white/80">Kolik vám vynese bezstarostný pronájem?</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Vyberte si svůj klid</h2>
+                <p class="text-xl text-gray-700">Kolik vám vynese bezstarostný pronájem?</p>
             </div>
     
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -739,11 +739,11 @@
     </section>
 
     <!-- Obsazení bytu sekce -->
-    <section class="py-24 bg-gray-900">
+    <section class="py-24 bg-gradient-to-b from-blue-100 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4">Profesionální obsazení bytu</h2>
-                <p class="text-xl text-white/80">Pomůžeme vám bez starostí najít kvalitního nájemníka</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Profesionální obsazení bytu</h2>
+                <p class="text-xl text-gray-700">Pomůžeme vám bez starostí najít kvalitního nájemníka</p>
             </div>
             
             <div class="bg-white rounded-2xl shadow-xl p-12 border border-white/10 max-w-5xl mx-auto">
@@ -928,7 +928,7 @@
 
 
                 <!-- Kalkulačka sekce pronajímatele --> 
-<section id="calculator" class="py-24 bg-gray-50" x-data="{ 
+<section id="calculator" class="py-24 bg-gradient-to-b from-red-50 to-white" x-data="{ 
     hourlyRate: 300, 
     monthlyRent: 15000,
     timeSpentHours: 30, // celkový čas v hodinách
@@ -953,67 +953,17 @@
     }
 }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-3">
-                Kalkulačka pronajímatele
-            </h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Pronajímání na vlastní pěst vs. pronájem bez starostí s Vzorným nájemcem
-            </p>
+        <div class="flex flex-col md:flex-row items-center justify-center mb-12 gap-6">
+            <div class="md:w-1/4 flex-shrink-0">
+                <img src="images/problem.png" alt="Problémový nájemník" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg border-4 border-white">
+            </div>
+            <div class="md:w-3/4 text-left">
+                <h2 class="text-4xl font-bold text-gray-900 mb-3">Kolik vás může stát problémový nájemník?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl">Vypočítejte si potenciální náklady a čas, který strávíte řešením problémů s nájemníkem. Všechny částky jsou založené na reálných případech.</p>
+            </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
-            <div class="p-8 border-b border-gray-200 bg-blue-50">
-                <div class="flex items-center mb-6">
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                        <span class="text-white font-bold">?</span>
-                    </div>
-                    <h3 class="text-xl font-bold">Proč tato kalkulačka?</h3>
-                </div>
-                <p class="text-gray-700 mb-6">Pronajímání nemovitosti není jen o výběru nájemníků a výběru nájemného. Zahrnuje mnoho časových a finančních nákladů, které nejsou na první pohled vidět.</p>
-                
-                <h4 class="font-bold text-lg mb-4">Tato kalkulačka vám ukáže:</h4>
-                
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Skryté náklady</h5>
-                        <p class="text-sm text-center text-gray-600">Čas strávený komunikací, řešením problémů a administrativou</p>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Hodnotu vašeho času</h5>
-                        <p class="text-sm text-center text-gray-600">Kolik vás vlastně stojí, když se o vše staráte sami</p>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Rozdíl výdělku</h5>
-                        <p class="text-sm text-center text-gray-600">Mezi samostatným pronajímáním a využitím služby Vzorný nájemce</p>
-                    </div>
-                </div>
-                
-                <p class="text-gray-700 mt-6">Výsledek vám nabídne jasný pohled na to, zda se vám více vyplatí pronajímat samostatně nebo využít naše služby.</p>
-            </div>
+
             
             <!-- Vstupní parametry -->
             <div class="p-8 border-b border-gray-200">
@@ -1050,7 +1000,7 @@
             <div class="p-8 text-center">
                 <p class="text-gray-600 mb-6">Po kliknutí vám ukážeme komplexní analýzu nákladů a potenciálních úspor při využití našich služeb.</p>
                 
-                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-red-600 hover:bg-red-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                     Spočítat a zobrazit detailní náklady
                 </button>
                 
