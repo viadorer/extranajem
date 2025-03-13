@@ -9,7 +9,6 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        [x-cloak] { display: none !important; }
         @keyframes bounce {
             0%, 100% {
                 transform: translateY(-25%);
@@ -59,42 +58,20 @@
         
         @keyframes float {
             0% {
-                transform: translateY(0px) scale(1.01);
+                transform: translateY(0px);
             }
             50% {
-                transform: translateY(-25px) scale(1.03);
+                transform: translateY(-15px);
             }
             100% {
-                transform: translateY(0px) scale(1.01);
+                transform: translateY(0px);
             }
         }
         
         .animate-float {
-            animation: float 8s ease-in-out infinite;
-            transition: transform 0.3s ease-in-out;
-            will-change: transform;
+            animation: float 6s ease-in-out infinite;
         }
     </style>
-
-    <!-- Alpine.js popup component -->
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('popupModal', () => ({
-                isOpen: false,
-                openModal() {
-                    this.isOpen = true;
-                    document.body.classList.add('overflow-hidden');
-                },
-                closeModal() {
-                    this.isOpen = false;
-                    document.body.classList.remove('overflow-hidden');
-                }
-            }));
-        });
-
-        // Automatické otevření popupu bylo odstraněno
-        // Popup se nyní zobrazí pouze po kliknutí na CTA tlačítko
-    </script>
 </head>
 <body class="bg-white">
     <!-- Navigation -->
@@ -144,7 +121,7 @@
     <!-- Hero Section -->
     <div class="relative h-screen flex flex-col justify-center overflow-hidden" style="height: 100vh; height: 100dvh; max-height: 100vh;">
         <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 z-0 overflow-visible">
+        <div class="absolute inset-0 z-0">
             <img src="images/hero-image.jpg" alt="Background" class="w-full h-full object-cover animate-float">
             <div class="absolute inset-0 gradient-overlay"></div>
         </div>
@@ -176,16 +153,16 @@
                                     <div class="text-sm text-gray-600">Let zkušeností</div>
                                 </div>
                                 <div class="text-left">
-                                    <div class="text-3xl font-bold text-gray-900">2750+</div>
+                                    <div class="text-3xl font-bold text-gray-900">2000+</div>
                                     <div class="text-sm text-gray-600">Spokojených klientů</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="fade-in-up mt-8">
-                            <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transition-all duration-200">
+                            <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transition-all duration-200">
                                 Chci pronajímat bez starostí
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="mt-12 lg:mt-0 lg:col-span-5 flex justify-center lg:justify-end relative z-10">
@@ -205,6 +182,28 @@
         </div>
     </div>
 
+    <!-- Trust Indicators Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in-up border-t border-gray-200 pt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold text-gray-900">98%</span>
+                                <span class="text-sm text-gray-600 mt-1">Úspěšnost případů</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold text-gray-900">30+</span>
+                                <span class="text-sm text-gray-600 mt-1">Let zkušeností</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold text-gray-900">2000+</span>
+                                <span class="text-sm text-gray-600 mt-1">Spokojených klientů</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -422,9 +421,7 @@
                  x-transition:enter-end="opacity-100 transform translate-y-0"
                  class="max-w-5xl mx-auto">
                 <div class="bg-white rounded-xl shadow-xl p-8">
-
-
-                    <!-- Náklady při změně nájemníka -->
+<!-- Náklady při změně nájemníka -->
 <div class="mb-8">
     <h3 class="text-xl font-semibold text-gray-900 mb-4">1. Náklady při změně nájemníka</h3>
     <div class="grid grid-cols-4 gap-4 text-sm">
@@ -624,10 +621,10 @@
                                 class="px-6 py-3 border-2 border-gray-900 text-base font-medium rounded-full text-gray-900 hover:bg-gray-50 transition-colors duration-200">
                             Přepočítat
                         </button>
-                        <button @click="Alpine.store('popup').open()" 
-                                class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105">
+                        <a href="#kontakt" 
+                           class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105">
                             Domluvit nezávaznou konzultaci
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -644,7 +641,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-white mb-4">Vyberte si svůj klid</h2>
-                <p class="text-xl text-white/80">Kolik vám vynese bezstarostný pronájem?</p>
+                <p class="text-xl text-white/80">Profesionální správa nemovitostí přesně podle vašich potřeb</p>
             </div>
     
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -670,9 +667,9 @@
                             <span>Garantovaný příjem 50%</span>
                         </li>
                     </ul>
-                    <button @click="Alpine.store('popup').open()" class="block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <a href="#kontakt" class="block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         Mám zájem
-                    </button>
+                    </a>
                 </div>
     
                 <!-- PREMIUM -->
@@ -703,9 +700,9 @@
                             <span>Pojištění nemovitosti</span>
                         </li>
                     </ul>
-                    <button @click="Alpine.store('popup').open()" class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200">
+                    <a href="#kontakt" class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200">
                         Mám zájem
-                    </button>
+                    </a>
                 </div>
     
                 <!-- GARANCE -->
@@ -730,81 +727,217 @@
                             <span>100% garance příjmu</span>
                         </li>
                     </ul>
-                    <button @click="Alpine.store('popup').open()" class="block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <a href="#kontakt" class="block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         Mám zájem
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Obsazení bytu sekce -->
-    <section class="py-24 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4">Profesionální obsazení bytu</h2>
-                <p class="text-xl text-white/80">Pomůžeme vám bez starostí najít kvalitního nájemníka</p>
-            </div>
-            
-            <div class="bg-white rounded-2xl shadow-xl p-12 border border-white/10 max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Pomůžeme vám s nalezením kvalitního nájemníka</h3>
-                        <p class="text-gray-600 mb-6">Nemáte zájem o kompletní správu pronájmu, ale uvítali byste pomoc ze startu? Váš byt profesionálně nafotíme, vytvoříme 3D virtuální prohlídku a zajistíme inzerci na 14 inzertních portálech.</p>
-                        <ul class="space-y-3 mb-8 md:mb-0">
-                            <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Profesionální nafocení bytu
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                3D virtuální prohlídka
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Inzerce na 14 portálech
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Prověření zájemců
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Nájemní smlouva
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="flex-shrink-0 text-center">
-                        <div class="text-3xl font-bold text-[#0D28F2] mb-4">Zdarma</div>
-                        <button @click="Alpine.store('popup').open()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                            Obsazení bytu bez starostí
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+
+                <section id="sluzby" class="py-24 bg-gradient-to-b from-white to-gray-50">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-16">
+                            <span class="text-[#0D28F2] font-semibold text-sm tracking-wider uppercase mb-2 block">Naše služby</span>
+                            <h2 class="text-4xl font-bold text-gray-900 mb-4">Vyberte si svůj klid</h2>
+                            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Profesionální správa nemovitostí přesně podle vašich potřeb a představ</p>
+                        </div>
+                
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                            <!-- KOMFORT -->
+                            <div class="relative bg-white rounded-3xl shadow-lg p-8 border-2 border-transparent hover:border-[#0D28F2] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                    <span class="px-6 py-2 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">Pro začátek</span>
+                                </div>
+                                <div class="text-center mb-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Komfort</h3>
+                                    <p class="text-gray-500 mb-4">Správa Plus</p>
+                                    <div class="text-2xl font-bold text-[#0D28F2]">85% z nájmu</div>
+                                </div>
+                                <ul class="space-y-4 mb-8">
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Kompletní správa nemovitosti</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Garantovaný příjem 50%</span>
+                                    </li>
+                                </ul>
+                                <a href="#kontakt" class="block w-full text-center px-8 py-4 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-all duration-300">
+                                    Mám zájem
+                                </a>
+                            </div>
+                
+                            <!-- PREMIUM -->
+                            <div class="relative bg-white rounded-3xl shadow-xl p-8 border-2 border-[#0D28F2] transform scale-105 z-10">
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                    <span class="px-6 py-2 bg-gradient-to-r from-[#0D28F2] to-blue-600 rounded-full text-sm font-medium text-white shadow-lg">Nejoblíbenější</span>
+                                </div>
+                                <div class="text-center mb-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                                    <p class="text-gray-500 mb-4">Správa Max</p>
+                                    <div class="text-2xl font-bold text-[#0D28F2]">88% z nájmu</div>
+                                </div>
+                                <ul class="space-y-4 mb-8">
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Vše z Komfort</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Garantovaný příjem 80%</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Pojištění nemovitosti</span>
+                                    </li>
+                                </ul>
+                                <a href="#kontakt" class="block w-full text-center px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                    Mám zájem
+                                </a>
+                            </div>
+                
+                            <!-- GARANCE -->
+                            <div class="relative bg-white rounded-3xl shadow-lg p-8 border-2 border-transparent hover:border-[#0D28F2] transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                    <span class="px-6 py-2 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">Maximální jistota</span>
+                                </div>
+                                <div class="text-center mb-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Garance</h3>
+                                    <p class="text-gray-500 mb-4">Správa Fix</p>
+                                    <div class="text-2xl font-bold text-[#0D28F2]">Fixní nájem</div>
+                                </div>
+                                <ul class="space-y-4 mb-8">
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">Garantovaný fixní nájem</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-[#0D28F2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700">100% garance příjmu</span>
+                                    </li>
+                                </ul>
+                                <a href="#kontakt" class="block w-full text-center px-8 py-4 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-all duration-300">
+                                    Mám zájem
+                                </a>
+                            </div>
+                        </div>
+                
+                        <!-- Klasický pronájem -->
+                        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg p-12 border border-gray-100">
+                            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Klasický pronájem zdarma</h3>
+                                    <p class="text-gray-600 mb-6">Pomůžeme vám s pronájmem vaší nemovitosti bez garance příjmu. Inzerce, prohlídky a právní servis máte u nás zdarma.</p>
+                                    <ul class="space-y-3 mb-8 md:mb-0">
+                                        <li class="flex items-center text-gray-700">
+                                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Inzerce na největších portálech
+                                        </li>
+                                        <li class="flex items-center text-gray-700">
+                                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Profesionální fotografie
+                                        </li>
+                                        <li class="flex items-center text-gray-700">
+                                            <svg class="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            Nájemní smlouva zdarma
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="flex-shrink-0 text-center">
+                                    <div class="text-3xl font-bold text-[#0D28F2] mb-4">0 Kč</div>
+                                    <a href="#kontakt" class="inline-block px-8 py-4 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                        Chci vědět více
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+<!-- Klasický pronájem -->
+<div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg p-12 border border-gray-100">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Pomůžeme vám s nalezením kvalitního nájemníka</h3>
+            <p class="text-gray-600 mb-6">Nemáte zájem o kompletní správu pronájmu, ale uvítali byste pomoc ze startu? Váš byt profesionálně nafotíme, vytvoříme 3D virtuální prohlídku a zajistíme inzerci na 14 inzertních portálech.</p>
+            <ul class="space-y-3 mb-8 md:mb-0">
+                <li class="flex items-center text-gray-700">
+                    <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Profesionální nafocení bytu
+                </li>
+                <li class="flex items-center text-gray-700">
+                    <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    3D virtuální prohlídka
+                </li>
+                <li class="flex items-center text-gray-700">
+                    <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Inzerce na 14 portálech
+                </li>
+                <li class="flex items-center text-gray-700">
+                    <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Prověření zájemců
+                </li>
+                <li class="flex items-center text-gray-700">
+                    <svg class="h-5 w-5 text-[#0D28F2] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Nájemní smlouva
+                </li>
+            </ul>
         </div>
-    </section>
+        <div class="flex-shrink-0 text-center">
+            <div class="text-3xl font-bold text-[#0D28F2] mb-4">Zdarma</div>
+            <a href="#kontakt" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Obsazení bytu bez starostí
+            </a>
+        </div>
+    </div>
+</div>
 
                     </div>
                 </section>
 
 
-                <section class="py-24 bg-gradient-to-br from-blue-50 to-blue-100">
+                <section class="py-24 bg-white">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="text-center mb-16">
                             <!-- Logo -->
-                            <div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden shadow-lg">
-                                <img src="images/logo.png" alt="Vzorný nájemce" class="w-full h-full object-cover">
+                            <div class="w-32 mx-auto mb-8">
+                                <img src="images/logo.png" alt="Vzorný nájemce" class="w-full h-auto">
                             </div>
                             <!-- Nadpis a podnadpis -->
                             <div class="max-w-3xl mx-auto">
@@ -820,7 +953,7 @@
                             <!-- První řada -->
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_A_fast-moving_clock_symbolizing_speed._Next_to_it_fdb3a465-239e-48b6-965d-c595ed047460_3.png" alt="Rychlost" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/VZORNÝ NÁJEMCE BĚŽÍ.png.avif" alt="Rychlost" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Rychlost a efektivita</h3>
                                 <p class="text-gray-600">Rychle a efektivně vyřešíme všechny vaše požadavky</p>
@@ -828,7 +961,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_An_elegant_real_estate_manager_in_a_suit_stands_i_674dc6bc-f8d6-449d-8b78-43c84ae62584_1.png" alt="Profesionalita" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/Vzorný nájemce busta.png.avif" alt="Profesionalita" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Profesionalita</h3>
                                 <p class="text-gray-600">Profesionální přístup ke každému klientovi</p>
@@ -836,7 +969,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_A_man_in_his_late_30s_stands_at_the_top_of_a_moun_995fa3ca-bbd1-494a-bff8-44d5f407a615_1.png" alt="Garance" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/Vzorný nájemce supermann.png" alt="Garance" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Garance a jistota</h3>
                                 <p class="text-gray-600">Garantujeme vám bezproblémový pronájem</p>
@@ -844,7 +977,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_A_stunning_modern_villa_on_the_French_Riviera_per_d63ce57f-a721-446f-8db2-adadf2d61cf7_0.png" alt="Pojištění" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/Vzorný nájemce supermann.png" alt="Pojištění" class="w-full h-full rounded-full shadow-lg object-cover">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Komplexní pojištění</h3>
                                 <p class="text-gray-600">Váš majetek chrání pojištění domácnosti a odpovědnosti</p>
@@ -853,7 +986,7 @@
                             <!-- Druhá řada -->
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Realitn_inspektor_v_profesionlnm_obleen_kontroluj_828d663c-b177-4ace-84b0-2d549b1101da_0.png" alt="Právní servis" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/legal.svg" alt="Právní servis" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Právní servis</h3>
                                 <p class="text-gray-600">Naši právníci jsou odborníci na pronájmy a vymáhání</p>
@@ -861,7 +994,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Luxusn_modern_byt_se_slunenm_svtlem_pronikajcm_ve_ed4d0d60-da09-4945-82b1-e3374bf1b4b2_3.png" alt="Kontrola" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/report.svg" alt="Kontrola" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Pravidelná kontrola</h3>
                                 <p class="text-gray-600">Váš byt pravidelně kontrolujeme a posíláme vám report</p>
@@ -869,7 +1002,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Profesionln_emeslnk_opravuje_vodovodn_kohoutek_v__f87e575b-05fc-4ff0-b327-cedac2af4a1a_0.png" alt="Opravy" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/repair.svg" alt="Opravy" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Řešení oprav</h3>
                                 <p class="text-gray-600">Zařídíme řemeslníky i opravy a vyřešíme pojistné události</p>
@@ -877,7 +1010,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Sebevdom_ena_ve_stylovm_ale_pohodlnm_obleen_sed_v_fe6fca9b-be00-4f88-85e1-188bf80bac81_3.png" alt="Klientská zóna" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/portal.svg" alt="Klientská zóna" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Klientská zóna</h3>
                                 <p class="text-gray-600">Všechny informace o bytě najdete v klientské zóně</p>
@@ -886,7 +1019,7 @@
                             <!-- Třetí řada -->
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Marketingov_kampa_Maximln_dosah_Vyuiji_irokou_pal_d94548f1-af9d-4315-a087-7a1aa60fbbac_2.png" alt="Vyúčtování" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/bill.svg" alt="Vyúčtování" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Vyúčtování služeb</h3>
                                 <p class="text-gray-600">Vyúčtování energií a služeb za vás spočítají naši odborníci</p>
@@ -894,7 +1027,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_An_elegant_real_estate_manager_in_a_suit_stands_i_674dc6bc-f8d6-449d-8b78-43c84ae62584_1.png" alt="Podpora" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/support.svg" alt="Podpora" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Non-stop podpora</h3>
                                 <p class="text-gray-600">Naše klientská podpora je vám k dispozici non-stop</p>
@@ -902,7 +1035,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Realitn_sprvce_podv_kle_novmu_njemnkovi_v_krsnm_u_3856ae33-5263-4d56-80fd-13bb43a16947_3.png" alt="Předání" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/handshake.svg" alt="Předání" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Předání bytu</h3>
                                 <p class="text-gray-600">Vyřešíme odchod podnájemníka i předání bytu novému</p>
@@ -910,7 +1043,7 @@
                 
                             <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group">
                                 <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
-                                    <img src="images/img/u9534644866_Pprava_nemovitosti_Zven_atraktivity_Spolen_se_zam_e900198e-57a2-49cb-804a-0f2996940150_2.png" alt="Péče" class="w-full h-full rounded-full shadow-lg object-cover">
+                                    <img src="images/home.svg" alt="Péče" class="w-full h-full">
                                 </div>
                                 <h3 class="text-lg font-semibold mb-3">Péče o byt</h3>
                                 <p class="text-gray-600">O byt pečujeme a vrátíme jej do původního stavu</p>
@@ -919,178 +1052,103 @@
                 
                         <!-- CTA -->
                         <div class="text-center">
-                            <button @click="Alpine.store('popup').open()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <a href="#kontakt" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 Chci bezstarostný pronájem
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </section>
 
 
-                <!-- Kalkulačka sekce pronajímatele --> 
-<section id="calculator" class="py-24 bg-gray-50" x-data="{ 
-    hourlyRate: 300, 
-    monthlyRent: 15000,
-    timeSpentHours: 30, // celkový čas v hodinách
-    fixedCostsValue: 30000, // přímé náklady
-    lostRentMonths: 3, // počet měsíců ušlého zisku
-    showDetailedAnalysis: false,
-
-    get timeCostsValue() {
-        return this.timeSpentHours * this.hourlyRate;
-    },
-    get lostRentValue() {
-        return this.lostRentMonths * this.monthlyRent;
-    },
-    get totalCostsValue() {
-        return this.timeCostsValue + this.fixedCostsValue + this.lostRentValue;
-    },
-    formatNumber(num) {
-        return new Intl.NumberFormat('cs-CZ').format(num);
-    },
-    toggleDetailedAnalysis() {
-        this.showDetailedAnalysis = !this.showDetailedAnalysis;
-    }
-}">
+                <!-- Kalkulačka sekce problémový nájemce --> 
+<section id="calculator" class="py-24 bg-gray-50" x-data="{ hourlyRate: 300, monthlyRent: 15000 }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-3">
-                Kalkulačka pronajímatele
-            </h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Pronajímání na vlastní pěst vs. pronájem bez starostí s Vzorným nájemcem
-            </p>
+        <div class="flex items-center justify-center mb-16 space-x-8">
+            <img class="h-28 w-28 rounded-full shadow-lg object-cover" src="images/logo.png" alt="Logo">
+            <div class="text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+                    Kolik vás může stát problémový nájemník?
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Vypočítejte si potenciální náklady a čas, který strávíte řešením problémů s nájemníkem.
+                    Všechny částky jsou založené na reálných případech.
+                </p>
+            </div>
         </div>
 
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
-            <div class="p-8 border-b border-gray-200 bg-blue-50">
-                <div class="flex items-center mb-6">
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                        <span class="text-white font-bold">?</span>
-                    </div>
-                    <h3 class="text-xl font-bold">Proč tato kalkulačka?</h3>
-                </div>
-                <p class="text-gray-700 mb-6">Pronajímání nemovitosti není jen o výběru nájemníků a výběru nájemného. Zahrnuje mnoho časových a finančních nákladů, které nejsou na první pohled vidět.</p>
-                
-                <h4 class="font-bold text-lg mb-4">Tato kalkulačka vám ukáže:</h4>
-                
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Skryté náklady</h5>
-                        <p class="text-sm text-center text-gray-600">Čas strávený komunikací, řešením problémů a administrativou</p>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Hodnotu vašeho času</h5>
-                        <p class="text-sm text-center text-gray-600">Kolik vás vlastně stojí, když se o vše staráte sami</p>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex justify-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h5 class="text-center font-medium mb-2">Rozdíl výdělku</h5>
-                        <p class="text-sm text-center text-gray-600">Mezi samostatným pronajímáním a využitím služby Vzorný nájemce</p>
-                    </div>
-                </div>
-                
-                <p class="text-gray-700 mt-6">Výsledek vám nabídne jasný pohled na to, zda se vám více vyplatí pronajímat samostatně nebo využít naše služby.</p>
-            </div>
-            
             <!-- Vstupní parametry -->
             <div class="p-8 border-b border-gray-200">
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Výše nájemného bez záloh</h3>
-                    <p class="text-gray-600 mb-4">Zadejte částku, kterou dostáváte měsíčně od nájemníka (bez záloh na energie). Na základě této částky vypočítáme skutečný zisk po odečtení všech nákladů.</p>
-                    <div class="mt-3 relative rounded-lg shadow-sm">
-                        <input type="number" 
-                               x-model="monthlyRent"
-                               class="block w-full h-14 px-4 text-lg border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out shadow-sm"
-                               placeholder="20000">
-                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                            <span class="text-gray-500 text-lg">Kč</span>
+                <div class="grid gap-8 md:grid-cols-2">
+                    <div class="flex flex-col h-full">
+                        <label class="block text-base font-medium text-gray-700 mb-3">
+                            Hodnota vaší hodiny<br>
+                            (čas strávený řešením problémů)
+                        </label>
+                        <div class="mt-1 relative rounded-lg shadow-sm flex-grow">
+                            <input type="number" 
+                                   x-model="hourlyRate"
+                                   class="block w-full h-14 px-4 text-base border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition duration-150 ease-in-out shadow-sm"
+                                   placeholder="300">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <span class="text-gray-500">Kč/h</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Na kolik si ceníte hodinu svého času?</h3>
-                    <p class="text-gray-600 mb-4">Tato hodnota nám umožní vypočítat, kolik vás skutečně stojí čas strávený správou nemovitosti, komunikací s nájemníky, řešením oprav a administrativou.</p>
-                    <div class="mt-3 relative rounded-lg shadow-sm">
-                        <input type="number" 
-                               x-model="hourlyRate"
-                               class="block w-full h-14 px-4 text-lg border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out shadow-sm"
-                               placeholder="300">
-                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                            <span class="text-gray-500 text-lg">Kč</span>
+                    <div class="flex flex-col h-full">
+                        <label class="block text-base font-medium text-gray-700 mb-3">
+                            Měsíční nájemné<br>
+                            (včetně nákladů na energie a služby)
+                        </label>
+                        <div class="mt-1 relative rounded-lg shadow-sm flex-grow">
+                            <input type="number" 
+                                   x-model="monthlyRent"
+                                   class="block w-full h-14 px-4 text-base border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition duration-150 ease-in-out shadow-sm"
+                                   placeholder="15000">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <span class="text-gray-500">Kč</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Výsledky -->
-            <div class="p-8 text-center">
-                <p class="text-gray-600 mb-6">Po kliknutí vám ukážeme komplexní analýzu nákladů a potenciálních úspor při využití našich služeb.</p>
-                
-                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-                    Spočítat a zobrazit detailní náklady
-                </button>
-                
-                <!-- Rozšířená analýza, která se zobrazí po kliknutí na tlačítko -->
-                <div x-show="showDetailedAnalysis" x-transition class="mt-12">
-                    <div class="grid gap-6 md:grid-cols-2 mb-8">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Celkové náklady</h3>
-                            <p class="text-3xl font-bold text-gray-900" x-text="formatNumber(totalCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Odhadované celkové náklady včetně vašeho času</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Strávený čas</h3>
-                            <p class="text-3xl font-bold text-gray-900" x-text="timeSpentHours + ' hodin'">0 hodin</p>
-                            <p class="text-sm text-gray-500 mt-1">Celkový čas strávený řešením problémů</p>
-                        </div>
+            <div class="p-8 bg-gray-50">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Celkové náklady</h3>
+                        <p class="text-3xl font-bold text-gray-900" id="totalCosts">0 Kč</p>
+                        <p class="text-sm text-gray-500 mt-1">Odhadované celkové náklady včetně vašeho času</p>
                     </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Strávený čas</h3>
+                        <p class="text-3xl font-bold text-gray-900" id="timeSpent">0 hodin</p>
+                        <p class="text-sm text-gray-500 mt-1">Celkový čas strávený řešením problémů</p>
+                    </div>
+                </div>
 
-                    <div class="grid gap-6 md:grid-cols-3">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Náklady na váš čas</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(timeCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Hodnota vašeho času</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Přímé náklady</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(fixedCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Právní služby, opravy, atd.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Ušlý zisk</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(lostRentValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Nezaplacené nájemné</p>
-                        </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Náklady na váš čas</h3>
+                        <p class="text-2xl font-bold text-gray-900" id="timeCosts">0 Kč</p>
+                        <p class="text-sm text-gray-500 mt-1">Hodnota vašeho času</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Přímé náklady</h3>
+                        <p class="text-2xl font-bold text-gray-900" id="fixedCosts">0 Kč</p>
+                        <p class="text-sm text-gray-500 mt-1">Právní služby, opravy, atd.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Ušlý zisk</h3>
+                        <p class="text-2xl font-bold text-gray-900" id="lostRent">0 Kč</p>
+                        <p class="text-sm text-gray-500 mt-1">Nezaplacené nájemné</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Detail nákladů, zobrazí se po rozkliknutí -->
-            <div class="p-8 border-t border-gray-200" x-show="showDetailedAnalysis">
+            <!-- Detail nákladů -->
+            <div class="p-8 border-t border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Co vše je zahrnuto v kalkulaci:</h3>
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
@@ -1116,21 +1174,69 @@
         </div>
 
         <div class="mt-12 text-center">
-            <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 Začít pronajímat profesionálně
-            </button>
+            </a>
         </div>
     </div>
 </section>
 
 
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-center mb-16 space-x-8">
+            <img class="h-28 w-28 rounded-full shadow-lg object-cover" src="images/vzornynajemce.png" alt="Vzorný nájemce">
+            <div class="text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Aktuálně řešíme</h2>
+                <p class="text-xl text-gray-600">Sledujte aktuální případy, které právě řešíme. Všechny údaje jsou anonymizovány.</p>
+            </div>
+        </div>
 
+        <div class="grid gap-8 md:grid-cols-3">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                        <span class="text-base font-medium text-red-500">Právě probíhá</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Neplatič v Praze 6</h3>
+                    <p class="text-gray-600 mb-6">Dlužná částka: 85 000 Kč</p>
+                    <div class="text-sm text-gray-500">Začátek řešení: před 2 dny</div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-base font-medium text-green-500">Úspěšně vyřešeno</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Rušení nočního klidu v Brně</h3>
+                    <p class="text-gray-600 mb-6">Výsledek: vystěhování nájemníka</p>
+                    <div class="text-sm text-gray-500">Vyřešeno za: 14 dní</div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="p-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
+                        <span class="text-base font-medium text-yellow-500">V řešení</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Poškození bytu v Plzni</h3>
+                    <p class="text-gray-600 mb-6">Odhadovaná škoda: 150 000 Kč</p>
+                    <div class="text-sm text-gray-500">Ve zpracování: 5 dní</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Moderní pronájem sekce -->
 <section id="moderni-pronajem" class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-center mb-16 space-x-8">
-            <img class="h-28 w-28 rounded-full shadow-lg object-cover" src="images/logo.png" alt="Logo">
+            <img class="h-28 w-28 rounded-full shadow-lg object-cover" src="images/vzornynajemce.png" alt="Logo">
             <div class="text-left max-w-2xl">
                 <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
                     Jak na moderní pronájem?
@@ -1206,9 +1312,9 @@
                     a kontaktujte nás pro nezávaznou konzultaci.
                 </p>
                 <div class="mt-8 text-center">
-                    <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Konzultovat váš případ
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1280,9 +1386,9 @@
                     Doporučte nás. Pokud si s vaším známým plácneme, jako poděkování od nás dostanete <span class="font-bold text-[#0D28F2]">10 % z částky provize</span>, po odečtení DPH a nákladů spojených s prodejem.
                 </p>
                 <div class="mt-8">
-                    <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Chci zjistit víc
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1290,48 +1396,39 @@
 </section>
 
         <!-- Sekce s červeným pozadím a formulářem -->
-        <section class="bg-gradient-to-br from-[#0D28F2] to-[#0D28F2]/90 py-16 relative overflow-hidden">
-            <!-- Dekorativní prvky na pozadí -->
-            <div class="absolute -top-10 right-1/4 w-48 h-48 bg-blue-300 rounded-full opacity-10 blur-2xl"></div>
-            <div class="absolute bottom-10 left-1/3 w-32 h-32 bg-white rounded-full opacity-10 blur-xl"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section class="bg-red-500 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
                     <!-- Levá část s textem -->
                     <div class="lg:w-1/2 text-white">
-                        <div class="inline-block mb-4 px-6 py-2 bg-white/10 rounded-full">
-                            <h3 class="text-white font-medium">Chcete zjistit víc</h3>
-                        </div>
-                        <h2 class="text-4xl sm:text-5xl font-bold mb-4">O bezstarostném pronájmu?</h2>
-                        <p class="mb-6 text-lg opacity-90">Nechte na nás, ať se vám do 24 hodin ozveme. Rádi vám probereme vaše potřeby a představíme výhody naší služby.</p>
+                        <h2 class="text-3xl font-bold mb-4">Chcete zjistit víc o bezstarostném pronájmu?</h2>
+                        <p class="mb-6">Nechte na nás, ať se vám do 24 hodin ozveme. Rádi vám probereme vaše potřeby a představíme výhody naší služby.</p>
                     </div>
                     
                     <!-- Pravá část s formulářem -->
                     <div class="lg:w-1/2">
-                        <div class="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 transform transition-all duration-300 hover:shadow-2xl">
-                            <form x-data="{ submitted: false }" @submit.prevent="submitted = true; setTimeout(() => submitted = false, 3000)" class="space-y-5">
+                        <div class="bg-white rounded-lg p-6 shadow-lg">
+                            <form x-data="{ submitted: false }" @submit.prevent="submitted = true; setTimeout(() => submitted = false, 3000)" class="space-y-4">
                                 <div>
-                                    <input type="text" placeholder="Jméno a příjmení" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
+                                    <input type="text" placeholder="Jméno a příjmení" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 </div>
                                 <div>
-                                    <input type="tel" placeholder="Telefonní číslo" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
+                                    <input type="tel" placeholder="Telefonní číslo" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 </div>
-                                <div class="flex space-x-6 items-center py-2">
+                                <div class="flex space-x-4 items-center py-2">
                                     <div class="flex items-center">
-                                        <input type="radio" id="majitel" name="typ" value="majitel" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]">
+                                        <input type="radio" id="majitel" name="typ" value="majitel" class="mr-2">
                                         <label for="majitel" class="text-gray-700">Majitel nemovitosti</label>
                                     </div>
                                     <div class="flex items-center">
-                                        <input type="radio" id="jine" name="typ" value="jine" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]">
+                                        <input type="radio" id="jine" name="typ" value="jine" class="mr-2">
                                         <label for="jine" class="text-gray-700">Jiné</label>
                                     </div>
                                 </div>
                                 <div class="text-xs text-gray-600 mb-4">
                                     Odesláním formuláře souhlasíte se zpracováním osobních údajů.
                                 </div>
-                                <button type="submit" class="w-full inline-flex justify-center items-center px-8 py-4 text-lg font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                                    Domluvit konzultaci
-                                </button>
+                                <button type="submit" class="w-full bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">Domluvit konzultaci</button>
                                 <div x-show="submitted" class="text-green-600 text-center font-medium">
                                     Děkujeme! Brzy vás budeme kontaktovat.
                                 </div>
@@ -1353,7 +1450,7 @@
                                     <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                                     <span class="text-red-500 font-medium">Omezená kapacita</span>
                                 </div>
-                                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tento týden přijímáme pouze 10 nových případů</h2>
+                                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tento týden přijímáme pouze 5 nových případů</h2>
                                 <p class="text-xl text-gray-600 mb-8">Každému případu se věnujeme s maximální péčí. Proto omezujeme počet nových klientů.</p>
                                 <div class="flex items-center space-x-4 mb-8">
                                     <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
@@ -1864,7 +1961,7 @@
                 </p>
                 <div class="flex items-center space-x-6 mt-4 md:mt-0">
                     <a href="https://www.vzornynajemce.cz" class="flex items-center space-x-2 group">
-                        <img src="images/logo.png" alt="Vzorný nájemce" class="h-8">
+                        <img src="images/vzornynajemce.png" alt="Vzorný nájemce" class="h-8">
                         <span class="text-gray-400 group-hover:text-white transition-colors text-sm">www.vzornynajemce.cz</span>
                     </a>
                     <span class="text-gray-600">|</span>
@@ -1982,92 +2079,5 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
     }
 });
 </script>
-
-<script>
-    document.addEventListener('alpine:init', () => {
-        // Globální store pro správu popupu
-        Alpine.store('popup', {
-            isOpen: false, // Explicitně nastavené na false pro zamezení nečekaného otevření
-            toggle() {
-                this.isOpen = !this.isOpen;
-            },
-            show() {
-                this.isOpen = true;
-            },
-            open() {
-                this.isOpen = true;
-            }
-        });
-
-        // Definice kontroleru pro popup formulář
-        Alpine.data('popupFormController', () => ({
-            open: false,
-
-            init() {
-                this.$watch('$store.popup.isOpen', (value) => {
-                    this.open = value;
-                });
-            },
-
-            close() {
-                this.open = false;
-                Alpine.store('popup').isOpen = false;
-            }
-        }));
-    });
-</script>
-
-<!-- Popup Form -->
-<div x-data="popupFormController" x-cloak x-init="$nextTick(() => { Alpine.store('popup').isOpen = false; })">
-    <!-- Backdrop -->
-    <div x-show="open" 
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[100]">
-    </div>
-
-    <!-- Modal -->
-    <div x-show="open" 
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 transform scale-95"
-        x-transition:enter-end="opacity-100 transform scale-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-95"
-        class="fixed inset-0 flex items-center justify-center p-4 z-[101]">
-        
-        <!-- Popup Content -->
-        <div @click.outside="close()" class="bg-white rounded-lg max-w-xl w-full mx-auto relative shadow-2xl overflow-hidden">
-            <!-- Close Button -->
-            <button @click="close()" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 z-10">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            
-            <!-- Popup Header -->
-            <div class="text-center pt-10 pb-4 px-6">
-                <h2 class="text-2xl font-bold text-gray-900">Ideální pronájem na dosah</h2>
-                <p class="text-gray-600 mt-2">Společně probereme, jak co nejlépe pronajmout vaši nemovitost.</p>
-            </div>
-            
-            <!-- Form Container - s přizpůsobeným stylem pro externí formulář -->
-            <div class="w-full px-6 pb-8" style="min-height: 480px;">
-                <script>
-                    (function (w,d,s,o,f,js,fjs) {
-                        w['ecm-widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-                        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-                        js.id = '24-68ad80a8296783256b609ecdeff8aa3e'; js.dataset.a = 'ptf'; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-                    }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
-                </script>
-                <div id="f-24-68ad80a8296783256b609ecdeff8aa3e" class="w-full h-full"></div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

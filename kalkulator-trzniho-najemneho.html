@@ -34,12 +34,14 @@
 
                 <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
-                    <a href="/blog" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
-                    <a href="#sluzby" class="text-gray-600 hover:text-gray-900 transition-colors">Služby</a>
-                    <a href="#moderni-pronajem" class="text-gray-600 hover:text-gray-900 transition-colors">Moderní pronájem</a>
-                    <a href="#kontakt" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                        Kontakt
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
+                    <a href="index.html#jak-to-funguje" class="text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
+                    <a href="kalkulator-trzniho-najemneho.html" class="text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
+                    <a href="index.html#o-sluzbe" class="text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+                    <a href="index.html#faq" class="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
+                    <a href="index.html#klientska-zona" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        Klientská zóna
                     </a>
                 </div>
 
@@ -58,24 +60,26 @@
         <!-- Mobile menu -->
         <div x-show="isOpen" class="md:hidden bg-white border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="/" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
-                <a href="/blog" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
-                <a href="#sluzby" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Služby</a>
-                <a href="#moderni-pronajem" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Moderní pronájem</a>
-                <a href="#kontakt" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Kontakt</a>
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
+                <a href="index.html#jak-to-funguje" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
+                <a href="kalkulator-trzniho-najemneho.html" class="block px-3 py-2 text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
+                <a href="index.html#o-sluzbe" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
+                <a href="blog.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+                <a href="index.html#faq" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
+                <a href="index.html#klientska-zona" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Klientská zóna</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32">
+    <main>
         <!-- Hero sekce -->
-        <section class="bg-gradient-to-b from-blue-50 to-white py-16 mb-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <section class="relative h-screen flex items-center bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-20 pb-16">
                     <!-- Levá strana s textem -->
                     <div class="lg:w-1/2 text-center lg:text-left">
-                        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Kalkulačka tržního nájemného</h1>
-                        <p class="text-xl text-gray-600 mb-8">Zjistěte aktuální tržní nájemné ve vaší lokalitě během několika vteřin. Náš kalkulátor vám pomůže stanovit optimální výši nájmu.</p>
+                        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Kalkulačka tržního nájemného</h1>
+                        <p class="text-xl text-gray-600 mb-8">Zjistěte během několika vteřin, za kolik můžete pronajmout svou nemovitost. Náš kalkulátor vám pomůže stanovit optimální výši nájmu podle aktuálních tržních dat. A pokud zvažujete prodej, snadno si spočítáte i orientační prodejní cenu.</p>
                         <div class="flex items-center justify-center lg:justify-start space-x-4">
                             <img src="images/logo.png" alt="Vzorný nájemce" class="h-16 w-16 rounded-full shadow-lg">
                             <p class="text-gray-700 font-medium">Profesionální nástroj<br>od Vzorného nájemce</p>
@@ -83,14 +87,31 @@
                     </div>
                     <!-- Pravá strana s obrázkem -->
                     <div class="lg:w-1/2">
-                        <img src="images/Vzorný nájemce supermann.png" alt="Vzorný nájemce" class="w-full max-w-md mx-auto transform hover:scale-105 transition-transform duration-300">
+                        <img src="images/Vzorný nájemce supermann.png" alt="Vzorný nájemce" class="w-full max-w-md mx-auto transition-all duration-700 hover:-translate-y-8">
                     </div>
                 </div>
+                
+                <!-- Animovaná šipka dolů -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+                    <a href="#content" class="text-gray-600 hover:text-[#0D28F2] transition-colors duration-300">
+                        
+                        <div class="animate-bounce">
+                            <svg class="w-6 h-6 mx-auto" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
             </div>
+            
+            <!-- Dekorativní pozadí - kruh -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#0D28F2]/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#0D28F2]/5 rounded-full blur-3xl"></div>
         </section>
-
-        <!-- Hlavní sekce s widgetem -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Obsahová sekce s widgetem -->
+        <section id="content" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Widget -->
             <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 border border-gray-100 mb-16 transform hover:scale-[1.02] transition-all duration-300">
                 <div class="cemap-widget" data-options="id=101"></div>
@@ -128,7 +149,7 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Potřebujete pomoc s pronájmem?</h2>
                 <p class="text-xl text-gray-600 mb-8">Svěřte svůj pronájem do rukou profesionálů</p>
                 <a href="#kontakt" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Kontaktujte nás</a>
-            </div>ého?</h2>
+            </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                         <div class="text-[#0D28F2] mb-4">
@@ -197,25 +218,35 @@
             <!-- Sekce 3: Kontakt -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
-                <ul class="space-y-2 text-gray-400">
+                <ul class="space-y-6 text-gray-300">
                     <li class="flex items-start">
-                        <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
-                        <span>PTF reality, s.r.o.<br>Rybná 716/24<br>110 00 Praha 1</span>
+                        <div>
+                            <div class="text-white font-medium mb-4">PTF reality, s.r.o.</div>
+                            <div class="mb-4">
+                                <div class="text-blue-300 font-semibold mb-1">Plzeň:</div>
+                                <div>Dřevěná 99/3<br>301 00 Plzeň</div>
+                            </div>
+                            <div>
+                                <div class="text-blue-300 font-semibold mb-1">Praha:</div>
+                                <div>Pod turnovskou tratí 182/18<br>198 00 Praha - Hloubětín</div>
+                            </div>
+                        </div>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        <a href="mailto:info@ptfreality.cz" class="hover:text-white transition-colors">info@ptfreality.cz</a>
+                        <a href="mailto:info@ptfreality.cz" class="text-white hover:text-blue-300 transition-colors font-medium">info@ptfreality.cz</a>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
-                        <a href="tel:+420777888999" class="hover:text-white transition-colors">+420 777 888 999</a>
+                        <a href="tel:+420777888999" class="text-white hover:text-blue-300 transition-colors font-medium">+420 777 888 999</a>
                     </li>
                 </ul>
             </div>
@@ -228,10 +259,10 @@
                     <li><a href="/cookies" class="text-gray-400 hover:text-white transition-colors">Cookies</a></li>
                     <li><a href="/obchodni-podminky" class="text-gray-400 hover:text-white transition-colors">Obchodní podmínky</a></li>
                     <li>
-                        <p class="text-gray-400 text-sm mt-4">
-                            IČO: 12345678<br>
-                            DIČ: CZ12345678<br>
-                            Společnost zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 123456
+                        <p class="text-gray-300 mt-4 leading-relaxed">
+                            <span class="text-blue-300 font-medium">IČO:</span> 06684394<br>
+                            <span class="text-blue-300 font-medium">DIČ:</span> CZ06684394<br>
+                            <span class="block mt-2">Společnost zapsaná v obchodním rejstříku<br>vedeném Městským soudem v Praze,<br>oddíl C, vložka 123456</span>
                         </p>
                     </li>
                 </ul>
