@@ -1,8 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Kontrola, zda uživatel již dal souhlas s cookies
     if (localStorage.getItem('cookieConsent') !== 'true') {
-        // Pokud ne, zobrazit banner
+        // Pokud ne, zobrazit banner a preventivně zakázat sledování
+        if (localStorage.getItem('cookieConsent') === 'false') {
+            window['ga-disable-G-CEGZ6Y8BJW'] = true;
+            if (typeof fbq === 'function') {
+                fbq('consent', 'revoke');
+            }
+        }
         showCookieConsent();
+    } else {
+        // Pokud souhlasí, povolit sledování
+        window['ga-disable-G-CEGZ6Y8BJW'] = false;
+        if (typeof fbq === 'function') {
+            fbq('consent', 'grant');
+        }
     }
 });
 
@@ -17,7 +29,7 @@ function showCookieConsent() {
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
             <div class="mb-4 md:mb-0 text-center md:text-left">
                 <p class="text-sm md:text-base">
-                    Tento web používá cookies pro zlepšení vaší uživatelské zkušenosti a analytiku návštěvnosti. 
+                    Tento web používá cookies pro zlepšení vaší uživatelské zkušenosti, analytiku návštěvnosti a marketingové účely (Google Analytics, Meta Pixel). 
                     <a href="/cookies.html" class="text-blue-400 hover:text-blue-300 underline">Více informací</a>
                 </p>
             </div>
@@ -53,6 +65,11 @@ function acceptCookies() {
     
     // Povolit Google Analytics
     window['ga-disable-G-CEGZ6Y8BJW'] = false;
+    
+    // Povolit Facebook Pixel
+    if (typeof fbq === 'function') {
+        fbq('consent', 'grant');
+    }
 }
 
 function declineCookies() {
@@ -61,6 +78,11 @@ function declineCookies() {
     
     // Zakázat Google Analytics
     window['ga-disable-G-CEGZ6Y8BJW'] = true;
+    
+    // Zakázat Facebook Pixel
+    if (typeof fbq === 'function') {
+        fbq('consent', 'revoke');
+    }
 }
 
 function hideCookieBanner() {
