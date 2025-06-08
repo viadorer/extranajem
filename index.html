@@ -102,6 +102,8 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
     
+
+    
     <style>
         /* Důležité: zajišťuje že obsah s x-cloak se nezobrazí dokud Alpine.js nenačte */
         [x-cloak] { display: none !important; }
@@ -183,6 +185,8 @@
 
     <!-- Alpine.js popup component -->
     <script>
+
+        
         document.addEventListener('alpine:init', () => {
             // Globální store pro správu popupu - definováno v head, aby bylo dostupné všem komponentám
             Alpine.store('popup', {
@@ -332,9 +336,20 @@
                         </div>
 
                         <div class="fade-in-up mt-6 flex flex-col sm:flex-row gap-4">
-                            <button @click="document.querySelector('#sluzby').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
+                            <button id="ecmWidget" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
                                 ZÍSKAT GARANCI NÁJMU →
                             </button>
+                            
+                            <script>
+                                document.getElementById('ecmWidget').addEventListener('click', function() {
+                                    (function (w,d,s,o,f,js,fjs) {
+                                        w['ecm-widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                                        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                                        js.id = '29-ea5d95a573043e2a42f500037466a078'; js.dataset.a = 'ptf'; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+                                        js.onload = function() { ecmwidget('show'); };
+                                    }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
+                                });
+                            </script>
                             <button @click="document.querySelector('#problemy').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
                                 Spočítat, kolik ušetřím
                             </button>
@@ -2059,5 +2074,8 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
             }, 300); // 300ms zpoždění po načtení stránky
         });
     </script>
+    
+    <!-- Test skript pro Alpine.js -->
+    <script src="test-alpine.js"></script>
 </body>
 </html>
