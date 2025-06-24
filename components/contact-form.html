@@ -1,0 +1,58 @@
+<!-- Kontaktní formulář sekce -->
+<section id="kontakt" class="bg-gradient-to-br from-[#0D28F2] to-[#0D28F2]/90 py-16 relative overflow-hidden">
+    <!-- Dekorativní prvky na pozadí -->
+    <div class="absolute -top-10 right-1/4 w-48 h-48 bg-blue-300 rounded-full opacity-10 blur-2xl"></div>
+    <div class="absolute bottom-10 left-1/3 w-32 h-32 bg-white rounded-full opacity-10 blur-xl"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <!-- Levá část s textem -->
+            <div class="lg:w-1/2 text-white">
+                <div class="inline-block mb-4 px-6 py-2 bg-white/10 rounded-full">
+                    <h3 class="text-white font-medium">Chcete zjistit víc</h3>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">O bezstarostném pronájmu?</h2>
+                <p class="mb-6 text-lg opacity-90">Nechte na nás, ať se vám do 24 hodin ozveme. Rádi vám probereme vaše potřeby a představíme výhody naší služby.</p>
+            </div>
+            
+            <!-- Pravá část s formulářem -->
+            <div class="lg:w-1/2">
+                <div class="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 transform transition-all duration-300 hover:shadow-2xl">
+                    <form x-data="{ submitted: false }" @submit.prevent="submitted = true; setTimeout(() => submitted = false, 3000)" class="space-y-5">
+                        <div>
+                            <input type="text" name="name" placeholder="Jméno a příjmení" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
+                        </div>
+                        <div>
+                            <input type="tel" name="phone" placeholder="Telefonní číslo" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
+                        </div>
+                        <div>
+                            <input type="email" name="email" placeholder="E-mail" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
+                        </div>
+                        <div>
+                            <textarea name="message" placeholder="Vaše zpráva (volitelné)" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm resize-none"></textarea>
+                        </div>
+                        <div class="flex space-x-6 items-center py-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="majitel" name="typ" value="majitel" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]" checked>
+                                <label for="majitel" class="text-gray-700">Majitel nemovitosti</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="jine" name="typ" value="jine" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]">
+                                <label for="jine" class="text-gray-700">Jiné</label>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-600 mb-4">
+                            Odesláním formuláře souhlasíte se zpracováním osobních údajů.
+                        </div>
+                        <button type="submit" class="w-full inline-flex justify-center items-center px-8 py-4 text-lg font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            Domluvit konzultaci
+                        </button>
+                        <div x-show="submitted" class="text-green-600 text-center font-medium">
+                            Děkujeme! Brzy vás budeme kontaktovat.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
